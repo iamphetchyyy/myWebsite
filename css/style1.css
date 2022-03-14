@@ -11,10 +11,6 @@ color: #E2C2B9;
 }
 
 hr{
-/* background-color:white; */
-border-style: none;
-border-top-style: dotted;
-border-color: black;
-border-width: 1px;
-width: 100%
+  background-color: #fff;
+	border-top: 5px dashed #8c8b8b;
 }
