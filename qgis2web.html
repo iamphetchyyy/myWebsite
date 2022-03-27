@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1421px;
+            height: 852px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/pl_amphoe_1.js"></script>
+        <script src="data/pl_tambon_2.js"></script>
+        <script src="data/pl_stream_3.js"></script>
+        <script src="data/pl_transportation_4.js"></script>
+        <script src="data/pl_village_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[16.777546586379785,99.94313851034698],[17.550519510831798,101.27380003149592]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0');
+        map.getPane('pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0').style.zIndex = 400;
+        var layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0 = L.tileLayer('https://b.tile.osm-tools.org/osm/{z}/{x}/{y}.png', {
+            pane: 'pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.osm-tools.org">© osm-tools.org & OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0;
+        map.addLayer(layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0);
+        function pop_pl_amphoe_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_CODE'] !== null ? autolinker.link(feature.properties['AMP_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_NAM_T'] !== null ? autolinker.link(feature.properties['AMP_NAM_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_NAM_E'] !== null ? autolinker.link(feature.properties['AMP_NAM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROV_CODE'] !== null ? autolinker.link(feature.properties['PROV_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_pl_amphoe_1_0(feature) {
+            switch(String(feature.properties['AMP_NAM_E'])) {
+                case 'Amphoe Bang Krathum':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Bang Rakam':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,91,58,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Chattakan':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(249,158,89,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Muang Phitsanu Lok':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,201,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Nakhon Thai':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,237,170,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Noen Mapang':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,248,185,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Phom Phiram':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,233,173,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Wang Thong':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(157,211,167,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Amphoe Wat Bot':
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,171,176,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_pl_amphoe_1',
+                opacity: 1,
+                color: 'rgba(247,247,247,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_pl_amphoe_1');
+        map.getPane('pane_pl_amphoe_1').style.zIndex = 401;
+        map.getPane('pane_pl_amphoe_1').style['mix-blend-mode'] = 'normal';
+        var layer_pl_amphoe_1 = new L.geoJson(json_pl_amphoe_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_pl_amphoe_1',
+            layerName: 'layer_pl_amphoe_1',
+            pane: 'pane_pl_amphoe_1',
+            onEachFeature: pop_pl_amphoe_1,
+            style: style_pl_amphoe_1_0,
+        });
+        bounds_group.addLayer(layer_pl_amphoe_1);
+        map.addLayer(layer_pl_amphoe_1);
+        function pop_pl_tambon_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TAM_CODE'] !== null ? autolinker.link(feature.properties['TAM_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TAM_NAM_T'] !== null ? autolinker.link(feature.properties['TAM_NAM_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_CODE'] !== null ? autolinker.link(feature.properties['AMP_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_NAM_T'] !== null ? autolinker.link(feature.properties['AMP_NAM_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_NAM_E'] !== null ? autolinker.link(feature.properties['AMP_NAM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_pl_tambon_2_0() {
+            return {
+                pane: 'pane_pl_tambon_2',
+                opacity: 1,
+                color: 'rgba(132,132,132,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_pl_tambon_2');
+        map.getPane('pane_pl_tambon_2').style.zIndex = 402;
+        map.getPane('pane_pl_tambon_2').style['mix-blend-mode'] = 'normal';
+        var layer_pl_tambon_2 = new L.geoJson(json_pl_tambon_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_pl_tambon_2',
+            layerName: 'layer_pl_tambon_2',
+            pane: 'pane_pl_tambon_2',
+            onEachFeature: pop_pl_tambon_2,
+            style: style_pl_tambon_2_0,
+        });
+        bounds_group.addLayer(layer_pl_tambon_2);
+        map.addLayer(layer_pl_tambon_2);
+        function pop_pl_stream_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LENGTH'] !== null ? autolinker.link(feature.properties['LENGTH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STR_ID'] !== null ? autolinker.link(feature.properties['STR_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STR_NAM_T'] !== null ? autolinker.link(feature.properties['STR_NAM_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STR_NAM_E'] !== null ? autolinker.link(feature.properties['STR_NAM_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCAL_NAM'] !== null ? autolinker.link(feature.properties['LOCAL_NAM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STR_TYPE'] !== null ? autolinker.link(feature.properties['STR_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_pl_stream_3_0() {
+            return {
+                pane: 'pane_pl_stream_3',
+                opacity: 1,
+                color: 'rgba(57,92,196,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_pl_stream_3');
+        map.getPane('pane_pl_stream_3').style.zIndex = 403;
+        map.getPane('pane_pl_stream_3').style['mix-blend-mode'] = 'normal';
+        var layer_pl_stream_3 = new L.geoJson(json_pl_stream_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_pl_stream_3',
+            layerName: 'layer_pl_stream_3',
+            pane: 'pane_pl_stream_3',
+            onEachFeature: pop_pl_stream_3,
+            style: style_pl_stream_3_0,
+        });
+        bounds_group.addLayer(layer_pl_stream_3);
+        map.addLayer(layer_pl_stream_3);
+        function pop_pl_transportation_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LENGTH'] !== null ? autolinker.link(feature.properties['LENGTH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TRANS_TYP'] !== null ? autolinker.link(feature.properties['TRANS_TYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TYP_T'] !== null ? autolinker.link(feature.properties['TYP_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME_T'] !== null ? autolinker.link(feature.properties['NAME_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME_E'] !== null ? autolinker.link(feature.properties['NAME_E'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TranNo'] !== null ? autolinker.link(feature.properties['TranNo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TranTyp_n'] !== null ? autolinker.link(feature.properties['TranTyp_n'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_pl_transportation_4_0() {
+            return {
+                pane: 'pane_pl_transportation_4',
+                opacity: 1,
+                color: 'rgba(127,87,50,1.0)',
+                dashArray: '10,5',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_pl_transportation_4');
+        map.getPane('pane_pl_transportation_4').style.zIndex = 404;
+        map.getPane('pane_pl_transportation_4').style['mix-blend-mode'] = 'normal';
+        var layer_pl_transportation_4 = new L.geoJson(json_pl_transportation_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_pl_transportation_4',
+            layerName: 'layer_pl_transportation_4',
+            pane: 'pane_pl_transportation_4',
+            onEachFeature: pop_pl_transportation_4,
+            style: style_pl_transportation_4_0,
+        });
+        bounds_group.addLayer(layer_pl_transportation_4);
+        map.addLayer(layer_pl_transportation_4);
+        function pop_pl_village_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NRD_CODE'] !== null ? autolinker.link(feature.properties['NRD_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VILL_CODE'] !== null ? autolinker.link(feature.properties['VILL_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VILL_NAM_T'] !== null ? autolinker.link(feature.properties['VILL_NAM_T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROV_CODE'] !== null ? autolinker.link(feature.properties['PROV_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AMP_CODE'] !== null ? autolinker.link(feature.properties['AMP_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TAM_CODE'] !== null ? autolinker.link(feature.properties['TAM_CODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_pl_village_5_0() {
+            return {
+                pane: 'pane_pl_village_5',
+                radius: 2.8,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,1,9,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_pl_village_5');
+        map.getPane('pane_pl_village_5').style.zIndex = 405;
+        map.getPane('pane_pl_village_5').style['mix-blend-mode'] = 'normal';
+        var layer_pl_village_5 = new L.geoJson(json_pl_village_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_pl_village_5',
+            layerName: 'layer_pl_village_5',
+            pane: 'pane_pl_village_5',
+            onEachFeature: pop_pl_village_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_pl_village_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_pl_village_5);
+        map.addLayer(layer_pl_village_5);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/pl_village_5.png" /> pl_village': layer_pl_village_5,'<img src="legend/pl_transportation_4.png" /> pl_transportation': layer_pl_transportation_4,'<img src="legend/pl_stream_3.png" /> pl_stream': layer_pl_stream_3,'<img src="legend/pl_tambon_2.png" /> pl_tambon': layer_pl_tambon_2,'pl_amphoe<br /><table><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeBangKrathum0.png" /></td><td>Amphoe Bang Krathum</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeBangRakam1.png" /></td><td>Amphoe Bang Rakam</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeChattakan2.png" /></td><td>Amphoe Chattakan</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeMuangPhitsanuLok3.png" /></td><td>Amphoe Muang Phitsanu Lok</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeNakhonThai4.png" /></td><td>Amphoe Nakhon Thai</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeNoenMapang5.png" /></td><td>Amphoe Noen Mapang</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoePhomPhiram6.png" /></td><td>Amphoe Phom Phiram</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeWangThong7.png" /></td><td>Amphoe Wang Thong</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_AmphoeWatBot8.png" /></td><td>Amphoe Wat Bot</td></tr><tr><td style="text-align: center;"><img src="legend/pl_amphoe_1_9.png" /></td><td></td></tr></table>': layer_pl_amphoe_1,"Cambodia, Laos, Thailand, Vietnam, Malaysia, Myanmar bilingual": layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_pl_amphoe_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['AMP_NAM_T'] !== null?String('<div style="color: #000000; font-size: 14pt; font-family: \'MS Sans Serif\', sans-serif;">' + layer.feature.properties['AMP_NAM_T']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_pl_amphoe_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_pl_amphoe_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_pl_amphoe_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_pl_amphoe_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_pl_amphoe_1]);
+        });
+        </script>
+    </body>
+</html>
