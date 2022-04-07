@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1183px;
+            height: 791px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+      <h1>ดัชนีพืชพรรณ จังหวัดนครราชสีมา ปี 2564</h1>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[14.075604059134513,100.77001744734449],[15.848406814462287,103.42360433459683]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0');
+        map.getPane('pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0').style.zIndex = 400;
+        var layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0 = L.tileLayer('https://c.tile.osm-tools.org/osm/{z}/{x}/{y}.png', {
+            pane: 'pane_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.osm-tools.org">© osm-tools.org & OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0;
+        map.addLayer(layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0);
+        map.createPane('pane_ndvi_kr_1');
+        map.getPane('pane_ndvi_kr_1').style.zIndex = 401;
+        var img_ndvi_kr_1 = 'data/ndvi_kr_1.png';
+        var img_bounds_ndvi_kr_1 = [[14.119899298847464,101.1809335430466],[15.808282875350105,103.01268823889473]];
+        var layer_ndvi_kr_1 = new L.imageOverlay(img_ndvi_kr_1,
+                                              img_bounds_ndvi_kr_1,
+                                              {pane: 'pane_ndvi_kr_1'});
+        bounds_group.addLayer(layer_ndvi_kr_1);
+        map.addLayer(layer_ndvi_kr_1);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{"ndvi_kr": layer_ndvi_kr_1,"Cambodia, Laos, Thailand, Vietnam, Malaysia, Myanmar bilingual": layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0,}).addTo(map);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
