@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         #map {
             width: 1183px;
@@ -17,7 +18,6 @@
         <title></title>
     </head>
     <body>
-      <h1>ดัชนีพืชพรรณ จังหวัดนครราชสีมา ปี 2564</h1>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -29,10 +29,11 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[14.075604059134513,100.77001744734449],[15.848406814462287,103.42360433459683]]);
+        }).fitBounds([[13.878497829797896,100.31597045963822],[14.313869720895523,100.9676487909263]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -52,17 +53,27 @@
         });
         layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0;
         map.addLayer(layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0);
-        map.createPane('pane_ndvi_kr_1');
-        map.getPane('pane_ndvi_kr_1').style.zIndex = 401;
-        var img_ndvi_kr_1 = 'data/ndvi_kr_1.png';
-        var img_bounds_ndvi_kr_1 = [[14.119899298847464,101.1809335430466],[15.808282875350105,103.01268823889473]];
-        var layer_ndvi_kr_1 = new L.imageOverlay(img_ndvi_kr_1,
-                                              img_bounds_ndvi_kr_1,
-                                              {pane: 'pane_ndvi_kr_1'});
-        bounds_group.addLayer(layer_ndvi_kr_1);
-        map.addLayer(layer_ndvi_kr_1);
+        map.createPane('pane_ndvi_pathum_1');
+        map.getPane('pane_ndvi_pathum_1').style.zIndex = 401;
+        var img_ndvi_pathum_1 = 'data/ndvi_pathum_1.png';
+        var img_bounds_ndvi_pathum_1 = [[13.916161392409157,100.33148661038318],[14.27620615828426,100.95213264018136]];
+        var layer_ndvi_pathum_1 = new L.imageOverlay(img_ndvi_pathum_1,
+                                              img_bounds_ndvi_pathum_1,
+                                              {pane: 'pane_ndvi_pathum_1'});
+        bounds_group.addLayer(layer_ndvi_pathum_1);
+        map.addLayer(layer_ndvi_pathum_1);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{"ndvi_kr": layer_ndvi_kr_1,"Cambodia, Laos, Thailand, Vietnam, Malaysia, Myanmar bilingual": layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0,}).addTo(map);
+        L.control.layers(baseMaps,{"ndvi_pathum": layer_ndvi_pathum_1,"Cambodia, Laos, Thailand, Vietnam, Malaysia, Myanmar bilingual": layer_CambodiaLaosThailandVietnamMalaysiaMyanmarbilingual_0,}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
